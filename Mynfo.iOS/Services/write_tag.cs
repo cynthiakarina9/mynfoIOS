@@ -34,7 +34,7 @@ namespace Mynfo.iOS.Services
             var pollingOption = NFCPollingOption.Iso14443;
             _tagSession = new NFCNdefReaderSession(this, DispatchQueue.CurrentQueue, true)
             {
-                AlertMessage = "Vuelve a acercar tu Tag",
+                AlertMessage = "Writing",
             };
             _tagSession.BeginSession();
             return _tcs.Task;
@@ -45,48 +45,38 @@ namespace Mynfo.iOS.Services
         }
         [Foundation.Export("readerSession:didDetectTags:")]
         [Foundation.Preserve(Conditional = true)]
-        public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
+        public override void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
         {
-            string user_id_tag = AppDelegate.user_id_tag;
-            if (user_id_tag == "?") 
+            try
             {
-                Task task = App.DisplayAlertAsync("¡Primero escanea este Tag para escribirlo!");
-                session.InvalidateSession();
-                session.Dispose();
-                AppDelegate.user_id_tag = "?";
-            }
-            else
-            {
-                if ((Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString())) || (0 == Convert.ToInt32(user_id_tag)))
+                var nFCNdefTag = tags[0];
+                session.ConnectToTag(nFCNdefTag, CompletionHandler);
+                string dominio = "http://boxweb.azurewebsites.net/";
+                string user = MainViewModel.GetInstance().User.UserId.ToString();
+                string tag_id = "";
+                string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
+                NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
+                nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
                 {
-                    var nFCNdefTag = tags[0];
-                    session.ConnectToTag(nFCNdefTag, CompletionHandler);
-                    string dominio = "http://boxweb1.azurewebsites.net/";
-                    string user = MainViewModel.GetInstance().User.UserId.ToString();
-                    string tag_id = "";
-                    string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
-                    NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
-                    NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate{});
-                    //Task task = App.DisplayAlertAsync(user_id_tag);
-                }
-                else
-                {
-                    Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");                    
                     session.Dispose();
                     session.InvalidateSession();
-                    AppDelegate.user_id_tag = "?";
-                }
-                AppDelegate.user_id_tag = "?";
-                PopupNavigation.Instance.PopAsync();
+                });
+                //Task task = App.DisplayAlertAsync(user_id_tag);
+
+                //AppDelegate.user_id_tag = "?";
+                //PopupNavigation.Instance.PopAsync();
+                session.Dispose();
                 session.InvalidateSession();
-                _tagSession.InvalidateSession();
-                PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                Thread.Sleep(4000);
-                PopupNavigation.Instance.PopAsync();
-                // session.Dispose();     
-            }            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                session.Dispose();
+                session.InvalidateSession();
+            }                                                   
         }
+
         string GetRecords(NFCNdefPayload[] records)
         {
             string record = null;
@@ -103,21 +93,88 @@ namespace Mynfo.iOS.Services
         }
         public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
         {
-            //add code here
+            var readerError = (NFCReaderError)(long)error.Code;
+
+            if (readerError != NFCReaderError.ReaderSessionInvalidationErrorFirstNDEFTagRead &&
+                readerError != NFCReaderError.ReaderSessionInvalidationErrorUserCanceled)
+            {
+                InvokeOnMainThread(() =>
+                {
+                    var alertController = UIAlertController.Create("Session Invalidated", error.LocalizedDescription, UIAlertControllerStyle.Alert);
+                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
+                    {
+                        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alertController, true, null);
+                    });
+                });
+            }
             session.InvalidateSession();
-            session.Dispose();
+            _tagSession.InvalidateSession();
         }
 
         public static bool modo_escritura = false;
 
         public void ExecuteCommand()
         {
-            modo_escritura = true;
-            PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
+            //modo_escritura = true;
+            //PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
 
-            AppDelegate j = new AppDelegate();
+            //AppDelegate j = new AppDelegate();
 
-            j.invoke_lector();
+            //j.invoke_lector();
+            ScanWriteAsync();
         }
     }
 }
+
+
+
+/*
+ public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
+        {
+            string user_id_tag = AppDelegate.user_id_tag;
+            if (user_id_tag == "?") 
+            {
+                Task task = App.DisplayAlertAsync("¡Primero escanea este Tag para escribirlo!");
+                session.InvalidateSession();
+                session.Dispose();
+                AppDelegate.user_id_tag = "?";
+            }
+            else
+            {
+                if ((Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString())) || (0 == Convert.ToInt32(user_id_tag)))
+                {
+                    var nFCNdefTag = tags[0];
+                    session.ConnectToTag(nFCNdefTag, CompletionHandler);
+                    string dominio = "http://boxweb.azurewebsites.net/";
+                    string user = MainViewModel.GetInstance().User.UserId.ToString();
+                    string tag_id = "";
+                    string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                    NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
+                    NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
+                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
+                    {
+                        session.Dispose();
+                        session.InvalidateSession();
+                    });
+                    //Task task = App.DisplayAlertAsync(user_id_tag);
+                }
+                else
+                {
+                    Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");                    
+                    session.Dispose();
+                    session.InvalidateSession();
+                    AppDelegate.user_id_tag = "?";
+                }
+                AppDelegate.user_id_tag = "?";
+                PopupNavigation.Instance.PopAsync();
+                session.InvalidateSession();
+                _tagSession.InvalidateSession();
+                //PopupNavigation.Instance.PushAsync(new Stickerconfig());
+                //Thread.Sleep(4000);
+                //PopupNavigation.Instance.PopAsync();
+                // session.Dispose();     
+            }            
+        }
+ */
+
