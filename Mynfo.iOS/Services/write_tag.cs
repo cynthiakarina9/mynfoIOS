@@ -67,7 +67,7 @@ namespace Mynfo.iOS.Services
                 //AppDelegate.user_id_tag = "?";
                 //PopupNavigation.Instance.PopAsync();
                 session.Dispose();
-                session.InvalidateSession();
+                session.InvalidateSession(); 
             }
             catch (Exception ex)
             {
