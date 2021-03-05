@@ -51,7 +51,9 @@
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
                     <CheckBox
-                        IsChecked="False"/>
+                        CheckedChanged="OnCheckBoxCheckedChanged"
+                        IsChecked="{Binding Intro}"
+                        x:Name="IntroCheckBox"/>
                     <Label 
                         HorizontalOptions="End"
                         VerticalOptions="Center"

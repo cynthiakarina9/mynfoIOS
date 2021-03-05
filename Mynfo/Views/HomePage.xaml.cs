@@ -735,11 +735,11 @@
         #region Commands
         private async void CreateBox_Clicked(object sender, EventArgs e)
         {
-            /*var mainViewModel = MainViewModel.GetInstance();
+            var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
-            await Navigation.PushAsync(new BoxRegisterPage());*/
-            MainViewModel.GetInstance().IntroductionGif = new IntroductionGifViewModel();
-            await PopupNavigation.Instance.PushAsync(new IntroductionGifPage());
+            await Navigation.PushAsync(new BoxRegisterPage());
+            /*MainViewModel.GetInstance().IntroductionGif = new IntroductionGifViewModel();
+            await PopupNavigation.Instance.PushAsync(new IntroductionGifPage());*/
         }        
         async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -100,6 +100,7 @@
                 return new RelayCommand(ChangeImage);
             }
         }
+
         private async void ChangeImage()
         {
             await CrossMedia.Current.Initialize();
@@ -152,13 +153,14 @@
                         return stream;
                     });
                 }
+
             }
             catch(Exception e)
             {
+
                 return;
             }
         }
-
         public ICommand SaveCommand
         {
             get
