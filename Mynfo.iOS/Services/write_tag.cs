@@ -34,7 +34,7 @@ namespace Mynfo.iOS.Services
             var pollingOption = NFCPollingOption.Iso14443;
             _tagSession = new NFCNdefReaderSession(this, DispatchQueue.CurrentQueue, true)
             {
-                AlertMessage = "Vuelve a acercar tu Tag",
+                AlertMessage = "Writing",
             };
             _tagSession.BeginSession();
             return _tcs.Task;
@@ -45,7 +45,92 @@ namespace Mynfo.iOS.Services
         }
         [Foundation.Export("readerSession:didDetectTags:")]
         [Foundation.Preserve(Conditional = true)]
-        public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
+        public override void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
+        {
+            try
+            {
+                var nFCNdefTag = tags[0];
+                session.ConnectToTag(nFCNdefTag, CompletionHandler);
+                string dominio = "http://boxweb.azurewebsites.net/";
+                string user = MainViewModel.GetInstance().User.UserId.ToString();
+                string tag_id = "";
+                string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
+                NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
+                nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
+                {
+                    session.Dispose();
+                    session.InvalidateSession();
+                });
+                //Task task = App.DisplayAlertAsync(user_id_tag);
+
+                //AppDelegate.user_id_tag = "?";
+                //PopupNavigation.Instance.PopAsync();
+                session.Dispose();
+                session.InvalidateSession();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                session.Dispose();
+                session.InvalidateSession();
+            }                                                   
+        }
+
+        string GetRecords(NFCNdefPayload[] records)
+        {
+            string record = null;
+            var results = new NFCNdefRecord[records.Length];
+            for (var i = 0; i < records.Length; i++)
+            {
+                record = records[i].Payload.ToString();
+            }
+            return record;
+        }
+        public static void CompletionHandler(NSError obj)
+        {
+            //add code here
+        }
+        public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
+        {
+            var readerError = (NFCReaderError)(long)error.Code;
+
+            if (readerError != NFCReaderError.ReaderSessionInvalidationErrorFirstNDEFTagRead &&
+                readerError != NFCReaderError.ReaderSessionInvalidationErrorUserCanceled)
+            {
+                InvokeOnMainThread(() =>
+                {
+                    var alertController = UIAlertController.Create("Session Invalidated", error.LocalizedDescription, UIAlertControllerStyle.Alert);
+                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
+                    {
+                        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alertController, true, null);
+                    });
+                });
+            }
+            session.InvalidateSession();
+            _tagSession.InvalidateSession();
+        }
+
+        public static bool modo_escritura = false;
+
+        public void ExecuteCommand()
+        {
+            //modo_escritura = true;
+            //PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
+
+            //AppDelegate j = new AppDelegate();
+
+            //j.invoke_lector();
+            ScanWriteAsync();
+        }
+    }
+}
+
+
+
+/*
+ public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
         {
             string user_id_tag = AppDelegate.user_id_tag;
             if (user_id_tag == "?") 
@@ -67,7 +152,11 @@ namespace Mynfo.iOS.Services
                     string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
                     NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
                     NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate{});
+                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
+                    {
+                        session.Dispose();
+                        session.InvalidateSession();
+                    });
                     //Task task = App.DisplayAlertAsync(user_id_tag);
                 }
                 else
@@ -81,43 +170,11 @@ namespace Mynfo.iOS.Services
                 PopupNavigation.Instance.PopAsync();
                 session.InvalidateSession();
                 _tagSession.InvalidateSession();
-                PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                Thread.Sleep(4000);
-                PopupNavigation.Instance.PopAsync();
+                //PopupNavigation.Instance.PushAsync(new Stickerconfig());
+                //Thread.Sleep(4000);
+                //PopupNavigation.Instance.PopAsync();
                 // session.Dispose();     
             }            
         }
-        string GetRecords(NFCNdefPayload[] records)
-        {
-            string record = null;
-            var results = new NFCNdefRecord[records.Length];
-            for (var i = 0; i < records.Length; i++)
-            {
-                record = records[i].Payload.ToString();
-            }
-            return record;
-        }
-        public static void CompletionHandler(NSError obj)
-        {
-            //add code here
-        }
-        public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
-        {
-            //add code here
-            session.InvalidateSession();
-            session.Dispose();
-        }
+ */
 
-        public static bool modo_escritura = false;
-
-        public void ExecuteCommand()
-        {
-            modo_escritura = true;
-            PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
-
-            AppDelegate j = new AppDelegate();
-
-            j.invoke_lector();
-        }
-    }
-}

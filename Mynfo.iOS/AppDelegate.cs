@@ -134,7 +134,8 @@
                     string[] depura_userid = variables[1].Split('&');
                     string tag_id = variables[2];
                     user_id = Convert.ToInt32(depura_userid[0]);
-                    if (write_tag.modo_escritura == false) { Imprime_box.Consulta_user(user_id.ToString(), tag_id); }                    
+                    //if (write_tag.modo_escritura == false) { Imprime_box.Consulta_user(user_id.ToString(), tag_id); }                    
+                    Imprime_box.Consulta_user(user_id.ToString(), tag_id);
                 }                
             }
             catch (Exception e) 
@@ -142,16 +143,16 @@
                 Console.WriteLine(e);
             }            
              
-            user_id_tag = user_id.ToString();
-            if (write_tag.modo_escritura == true)
-            {
-                session.InvalidateSession();
-                session.Dispose();
-                Thread.Sleep(7000);
-                write_tag.modo_escritura = false;
-                write_tag myobject = new write_tag();
-                myobject.ScanWriteAsync();
-            }
+            //user_id_tag = user_id.ToString();
+            //if (write_tag.modo_escritura == true)
+            //{
+            //    session.InvalidateSession();
+            //    session.Dispose();
+            //    Thread.Sleep(7000);
+            //    write_tag.modo_escritura = false;
+            //    write_tag myobject = new write_tag();
+            //    myobject.ScanWriteAsync();
+            //}
             session.InvalidateSession();           
             Session.InvalidateSession();
         }        
@@ -167,14 +168,14 @@
                 {
                     var alertController = UIAlertController.Create("Session Invalidated", error.LocalizedDescription, UIAlertControllerStyle.Alert);
                     alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
-                    //DispatchQueue.MainQueue.DispatchAsync(() =>
-                    //{
-                    //    this.PresentViewController(alertController, true, null);
-                    //});
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
+                    {
+                        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alertController, true, null);
+                    });
                 });
             }
             session.InvalidateSession();
-            session.Dispose();
+            Session.InvalidateSession();
         }
 
         string GetRecords(NFCNdefPayload[] records)
