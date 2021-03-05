@@ -59,16 +59,17 @@ namespace Mynfo.iOS.Services
                 NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
                 nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
                 {
-                    session.Dispose();
                     session.InvalidateSession();
                 });
                 //Task task = App.DisplayAlertAsync(user_id_tag);
 
                 //AppDelegate.user_id_tag = "?";
-                //PopupNavigation.Instance.PopAsync();
-                session.Dispose();
-                session.InvalidateSession();
-            }
+                //PopupNavigation.Instance.PopAsync(); 
+                
+                
+                //session.InvalidateSession();
+                //session.Dispose(); 
+            } 
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
@@ -93,22 +94,9 @@ namespace Mynfo.iOS.Services
         }
         public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
         {
-            var readerError = (NFCReaderError)(long)error.Code;
-
-            if (readerError != NFCReaderError.ReaderSessionInvalidationErrorFirstNDEFTagRead &&
-                readerError != NFCReaderError.ReaderSessionInvalidationErrorUserCanceled)
-            {
-                InvokeOnMainThread(() =>
-                {
-                    var alertController = UIAlertController.Create("Session Invalidated", error.LocalizedDescription, UIAlertControllerStyle.Alert);
-                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
-                    DispatchQueue.MainQueue.DispatchAsync(() =>
-                    {
-                        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(alertController, true, null);
-                    });
-                });
-            }
+            
             session.InvalidateSession();
+            session.Dispose();
             _tagSession.InvalidateSession();
         }
 
