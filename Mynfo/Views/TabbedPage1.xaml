@@ -9,7 +9,7 @@
     <NavigationPage.TitleView>
         <Grid>
             <StackLayout
-                Padding = "0,0,70,0">
+                Padding = "0,0,40,0">
                 <ImageButton
                     BackgroundColor = "Transparent"
                     WidthRequest = "100" 

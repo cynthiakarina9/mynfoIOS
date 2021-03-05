@@ -574,6 +574,21 @@
   <ItemGroup>
     <BundleResource Include="Resources\edit3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paleta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pelta3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GIF_scaneo_iOS.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\compra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GIF_mynfo_general.gif" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />

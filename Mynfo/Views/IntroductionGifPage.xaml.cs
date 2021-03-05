@@ -1,16 +1,14 @@
 ﻿namespace Mynfo.Views
 {
+    using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GifPage
+    public partial class IntroductionGifPage
     {
-        
-        #region Constructor
-        public GifPage()
+        public IntroductionGifPage()
         {
             InitializeComponent();
         }
-        #endregion
     }
 }

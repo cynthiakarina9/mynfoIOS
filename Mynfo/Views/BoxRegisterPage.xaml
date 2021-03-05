@@ -42,6 +42,7 @@
                     HeightRequest = "80"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
+                    BackgroundColor="Transparent"
                     MaxLength="20"
                     Text = "{Binding Name}"
                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"

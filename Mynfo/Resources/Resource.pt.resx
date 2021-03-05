@@ -385,7 +385,7 @@
     <value>Adicionar perfil à rede social</value>
   </data>
   <data name="BoxList" xml:space="preserve">
-    <value>Lista de boxes</value>
+    <value>Lista de Boxes</value>
   </data>
   <data name="BoxName" xml:space="preserve">
     <value>Nome da Box</value>
@@ -469,7 +469,7 @@
     <value>Para retornar</value>
   </data>
   <data name="DeleteBoxNotification" xml:space="preserve">
-    <value>Você está prestes a excluir a caixa permanentemente, deseja continuar?</value>
+    <value>Você está prestes a excluir a Box permanentemente, deseja continuar?</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Não</value>
@@ -505,8 +505,7 @@
     <value>Excluir</value>
   </data>
   <data name="LinkValidation" xml:space="preserve">
-    <value>Você deve inserir um url
-Você deve inserir um url</value>
+    <value>Você deve inserir um url</value>
   </data>
   <data name="ProfileELabel" xml:space="preserve">
     <value>Seu usuário foi criado por uma rede social, para fazer uma mudança você deve fazer a partir dessa mesma rede social.</value>
@@ -524,13 +523,13 @@ Você deve inserir um url</value>
     <value>Adicionar rede</value>
   </data>
   <data name="AskDeleteNetworkFromBox" xml:space="preserve">
-    <value>Você deseja excluir a rede permanentemente da box?</value>
+    <value>Você deseja excluir a rede permanentemente da Box?</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Fechar</value>
   </data>
   <data name="NetworkAdded" xml:space="preserve">
-    <value>Rede adicionada à caixa </value>
+    <value>Rede adicionada à Box</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Sucesso!</value>
@@ -551,7 +550,7 @@ Você deve inserir um url</value>
     <value />
   </data>
   <data name="EmptyBox" xml:space="preserve">
-    <value>Você ainda não tem redes adicionadas a esta caixa.</value>
+    <value>Você ainda não tem redes adicionadas a esta Box.</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Próximo</value>
@@ -572,7 +571,7 @@ Você deve inserir um url</value>
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurar Tag</value>
+    <value>Configurações de myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -584,7 +583,7 @@ Você deve inserir um url</value>
     <value>e cole na parte de trás do seu telefone.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configurar TAG</value>
+    <value>Configurar myTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Pressione</value>
@@ -593,7 +592,7 @@ Você deve inserir um url</value>
     <value>Loja</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Certifique-se de ter sua TAG em mãos.</value>
+    <value>Certifique-se de ter sua myTAG em mãos.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>Se você ainda não tem, compre em</value>
@@ -602,22 +601,22 @@ Você deve inserir um url</value>
     <value>Perfil Mynfo</value>
   </data>
   <data name="QRForWhat" xml:space="preserve">
-    <value>Este código QR permitirá que você compartilhe sua caixa padrão em qualquer navegador.</value>
+    <value>Este código QR permitirá que você compartilhe sua Box padrão em qualquer navegador.</value>
   </data>
   <data name="QRMynfo" xml:space="preserve">
-    <value>Digitalize um código QR do Mynfo.</value>
+    <value>Digitalize um código QR do mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Autocolante de configuração . . .</value>
+    <value>Preparando seu myTAG...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>Todas as caixas que você configurar e manipular a partir de agora serão refletidas em sua etiqueta.</value>
+    <value>Todas as Boxes que você configurar e manipular a partir de agora serão refletidas em sua myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>¡Etiqueta configurada!</value>
+    <value>¡myTAG configurado!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Mantenha seu telefone próximo à etiqueta.</value>
+    <value>Mantenha seu telefone próximo à myTAG.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Pronto para escanear.</value>
@@ -644,7 +643,7 @@ Você deve inserir um url</value>
     <value> anos</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>Como leio outro TAG?</value>
+    <value>Como leio outro myTAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexões: </value>
@@ -696,5 +695,35 @@ Você deve inserir um url</value>
   </data>
   <data name="Yellow" xml:space="preserve">
     <value>Dourado</value>
+  </data>
+  <data name="MessageWhatsApp" xml:space="preserve">
+    <value>Olá!, conheci você através do mynfo, sou</value>
+  </data>
+  <data name="NoBoxesYet" xml:space="preserve">
+    <value>Não há Boxes criadas ainda</value>
+  </data>
+  <data name="ScanTAGFirst" xml:space="preserve">
+    <value>Por favor, escaneie este myTAG para escrever primeiro!</value>
+  </data>
+  <data name="TAGUsed" xml:space="preserve">
+    <value>Este myTAG está vinculada a outro usuário!</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>O usuário é inválido</value>
+  </data>
+  <data name="UserWithoutBoxes" xml:space="preserve">
+    <value>O usuário não tem Boxes</value>
+  </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>Como funciona o mynfo?</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>Não mostrar novamente</value>
+  </data>
+  <data name="Walktrough" xml:space="preserve">
+    <value>Aqui você dá uma pequena caminhada pelo app</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bem vindo ao mynfo</value>
   </data>
 </root>

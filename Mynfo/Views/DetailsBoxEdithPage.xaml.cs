@@ -66,6 +66,7 @@
                 BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
                 DeleteButton.Source = "trash3";
+                ColorBtn.Source = "pelta3";
             }
             else
             {
@@ -74,6 +75,7 @@
                 BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
                 DeleteButton.Source = "trash2";
+                ColorBtn.Source = "paleta";
             }
             
             //Acción de boton de borrado
@@ -97,7 +99,7 @@
                     sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId,
                     sqlDeleteWhatsappProfiles = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId,
                     sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
             string sql;

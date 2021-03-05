@@ -5,15 +5,6 @@
              x:Class="Mynfo.Views.GifPage"
              BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <!--<ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0"
-                               EndPoint="1,1">
-            <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
-                            Offset="0.1" />
-            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
-                            Offset="0.6" />
-        </LinearGradientBrush>
-    </ContentPage.Background>-->
     <ContentPage.Content>
         <Frame
             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"

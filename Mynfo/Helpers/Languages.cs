@@ -811,5 +811,55 @@
         {
             get { return Resource.LadaValidation; }
         }
+
+        public static string MessageWhatsApp
+        {
+            get { return Resource.MessageWhatsApp; }
+        }
+
+        public static string ScanTAGFirst
+        {
+            get { return Resource.ScanTAGFirst;  }
+        }
+
+        public static string TAGUsed
+        {
+            get { return Resource.TAGUsed; }
+        }
+
+        public static string NoBoxesYet
+        {
+            get { return Resource.NoBoxesYet; }
+        }
+
+        public static string UserNotFound
+        {
+            get { return Resource.UserNotFound;  }
+        }
+
+        public static string UserWithoutBoxes
+        {
+            get { return Resource.UserWithoutBoxes; }
+        }
+
+        public static string HowMynfoWorks
+        {
+            get { return Resource.HowMynfoWorks; }
+        }
+
+        public static string Welcome
+        {
+            get { return Resource.Welcome;  }
+        }
+
+        public static string Walktrough
+        {
+            get { return Resource.Walktrough;  }
+        }
+        
+        public static string DoNotShowAgain
+        {
+            get { return Resource.DoNotShowAgain; }
+        }
     }
 }
