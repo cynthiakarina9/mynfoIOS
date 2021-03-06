@@ -726,4 +726,25 @@
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenido a mynfo</value>
   </data>
+  <data name="Step" xml:space="preserve">
+    <value>Paso</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>Ten a la mano tu myTAG, si aún no lo tienes, cómpralo en la tienda</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>Al presionar el botón configurar myTAG, tu celular vibrará, una vez que termine de vibrar aparecerá un popup con el lector NFC</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>Acerca tu myTAG a la parte superior trasera de tu celular</value>
+  </data>
+  <data name="Step4" xml:space="preserve">
+    <value>Mantén tu myTAG pegado al celular hasta que el lector NFC te muestre un mensaje de éxito</value>
+  </data>
+  <data name="Step5" xml:space="preserve">
+    <value>Cuando se cierre el popup ya puedes despegar tu myTAG</value>
+  </data>
+  <data name="Step6" xml:space="preserve">
+    <value>¡Tu myTAG está listo! Puedes pegarlo en tu celular o donde tu prefieras y empezar a compartir tu información</value>
+  </data>
 </root>

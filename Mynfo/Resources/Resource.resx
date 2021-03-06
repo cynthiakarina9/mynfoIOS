@@ -726,4 +726,25 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to mynfo</value>
   </data>
+  <data name="Step" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>Have your myTAG on hand, if you don't have it yet, buy it in the store</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>When you press the configure myTAG button, your cell phone will vibrate, once it finishes vibrating, a popup will appear with the NFC reader</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>Bring your myTAG to the top back of your phone</value>
+  </data>
+  <data name="Step4" xml:space="preserve">
+    <value>Keep your myTAG on the cell phone until the NFC reader shows you a success message</value>
+  </data>
+  <data name="Step5" xml:space="preserve">
+    <value>When the popup closes you can take off your myTAG</value>
+  </data>
+  <data name="Step6" xml:space="preserve">
+    <value>Your myTAG is ready! You can paste it on your cell phone or wherever you prefer and start sharing your information</value>
+  </data>
 </root>

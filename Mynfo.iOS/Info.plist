@@ -26,7 +26,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.companyname.Mynfo</string>
 	<key>CFBundleVersion</key>
-	<string>1.22</string>
+	<string>1.24</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -51,12 +51,12 @@
 	<string>This is a characteristic that is no needed on the app</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery.</string>
-  <key>ITSAppUsesNonExemptEncryption</key>
-  <false/>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>This is a characteristic that is no needed on the app</string>
-  <key>NSBluetoothAlwaysUsageDescription</key>
-  <string>This is a characteristic that is no needed on the app</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
 	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
 	<string>com.apple.developer.nfc.readersession.iso7816.select-identifiers</string>
 	<key>com.apple.developer.nfc.readersession.iso15693.select-identifiers</key>

@@ -1690,6 +1690,69 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Step.
+        /// </summary>
+        public static string Step {
+            get {
+                return ResourceManager.GetString("Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Have your myTAG on hand, if you don&apos;t have it yet, buy it in the store.
+        /// </summary>
+        public static string Step1 {
+            get {
+                return ResourceManager.GetString("Step1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a When you press the configure myTAG button, your cell phone will vibrate, once it finishes vibrating, a popup will appear with the NFC reader.
+        /// </summary>
+        public static string Step2 {
+            get {
+                return ResourceManager.GetString("Step2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bring your myTAG to the top back of your phone.
+        /// </summary>
+        public static string Step3 {
+            get {
+                return ResourceManager.GetString("Step3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Keep your myTAG on the cell phone until the NFC reader shows you a success message.
+        /// </summary>
+        public static string Step4 {
+            get {
+                return ResourceManager.GetString("Step4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a When the popup closes you can take off your myTAG.
+        /// </summary>
+        public static string Step5 {
+            get {
+                return ResourceManager.GetString("Step5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your myTAG is ready! You can paste it on your cell phone or wherever you prefer and start sharing your information.
+        /// </summary>
+        public static string Step6 {
+            get {
+                return ResourceManager.GetString("Step6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Store.
         /// </summary>
         public static string Store {

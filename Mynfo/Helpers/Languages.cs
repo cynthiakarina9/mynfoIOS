@@ -861,5 +861,33 @@
         {
             get { return Resource.DoNotShowAgain; }
         }
+        public static string Step
+        {
+            get { return Resource.Step; }
+        }
+        public static string Step1
+        {
+            get { return Resource.Step1; }
+        }
+        public static string Step2
+        {
+            get { return Resource.Step2; }
+        }
+        public static string Step3
+        {
+            get { return Resource.Step3; }
+        }
+        public static string Step4
+        {
+            get { return Resource.Step4; }
+        }
+        public static string Step5
+        {
+            get { return Resource.Step5; }
+        }
+        public static string Step6
+        {
+            get { return Resource.Step6; }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
     using System;
@@ -54,23 +55,33 @@
 
             CarouselInstructions.Add(new CarouselModel 
             { 
-                Title = "Paso 1", 
-                Detail = "Ten a la mano tu myTAG, si aun no lo tienes, compralo en tienda" 
+                Title = Languages.Step + " 1", 
+                Detail = Languages.Step1
             });
             CarouselInstructions.Add(new CarouselModel 
             {   
-                Title = "Paso 2", 
-                Detail = "Al presionar el botón configurar TAG, tu teléfono vibrará, una vez que termine de vibrar acerca tu sticker a la parte TRASERA SUPERIOR de tu teléfono" 
+                Title = Languages.Step + " 2", 
+                Detail = Languages.Step2
             });
             CarouselInstructions.Add(new CarouselModel
             {
-                Title = "Paso 3",
-                Detail = "Manten tu myTAG pegado al teléfono hasta que vibre nuevamente y veas la pantalla de confirmación"
+                Title = Languages.Step + " 3",
+                Detail = Languages.Step3
             });
             CarouselInstructions.Add(new CarouselModel
             {
-                Title = "Paso 4",
-                Detail = "Manten tu myTAG pegado al teléfono hasta que vibre nuevamente y veas la pantalla de confirmación"
+                Title = Languages.Step + " 4",
+                Detail = Languages.Step4
+            });
+            CarouselInstructions.Add(new CarouselModel
+            {
+                Title = Languages.Step + " 5",
+                Detail = Languages.Step5
+            });
+            CarouselInstructions.Add(new CarouselModel
+            {
+                Title = Languages.Step + " 6",
+                Detail = Languages.Step6
             });
         }
         #endregion
