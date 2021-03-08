@@ -349,7 +349,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a myTAG configurated!.
+        ///   Busca una cadena traducida similar a myTAG configured!.
         /// </summary>
         public static string ConfigStickerRi {
             get {
@@ -880,7 +880,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a How mynfo works?.
+        ///   Busca una cadena traducida similar a How does mynfo work?.
         /// </summary>
         public static string HowMynfoWorks {
             get {
@@ -1699,7 +1699,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Have your myTAG on hand, if you don&apos;t have it yet, buy it in the store.
+        ///   Busca una cadena traducida similar a Press the Configure myTAG button, wait until the phone stops vibrating and you see the &quot;ready to scan&quot; screen, then place your myTAG to the upper back of your phone..
         /// </summary>
         public static string Step1 {
             get {
@@ -1708,7 +1708,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a When you press the configure myTAG button, your cell phone will vibrate, once it finishes vibrating, a popup will appear with the NFC reader.
+        ///   Busca una cadena traducida similar a Keep your myTAG pressed against the phone until it vibrates again and you see the confirmation screen. NOTE: The area of your phone where you have to place your myTAG in order to congifure it may vary dependeing on the phone model..
         /// </summary>
         public static string Step2 {
             get {
@@ -1789,11 +1789,20 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a myTAG configuration.
+        ///   Busca una cadena traducida similar a Configure myTAG.
         /// </summary>
         public static string Tag {
             get {
                 return ResourceManager.GetString("Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Read both steps before configurating your myTAG.
+        /// </summary>
+        public static string TAGInstructions {
+            get {
+                return ResourceManager.GetString("TAGInstructions", resourceCulture);
             }
         }
         
@@ -1888,7 +1897,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Here you have a little walk trough the app.
+        ///   Busca una cadena traducida similar a Here you have a little walk through the app.
         /// </summary>
         public static string Walktrough {
             get {

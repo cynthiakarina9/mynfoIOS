@@ -571,7 +571,7 @@
     <value>QR code</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>myTAG configuration</value>
+    <value>Configure myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -613,7 +613,7 @@
     <value>All the Boxes that you configure and manipulate from now on will be reflected in your myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>myTAG configurated!</value>
+    <value>myTAG configured!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
     <value>Hold your Phone near the myTAG.</value>
@@ -715,13 +715,13 @@
     <value>The user doesn´t have Boxes created</value>
   </data>
   <data name="HowMynfoWorks" xml:space="preserve">
-    <value>How mynfo works?</value>
+    <value>How does mynfo work?</value>
   </data>
   <data name="DoNotShowAgain" xml:space="preserve">
     <value>Don't show again</value>
   </data>
   <data name="Walktrough" xml:space="preserve">
-    <value>Here you have a little walk trough the app</value>
+    <value>Here you have a little walk through the app</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to mynfo</value>
@@ -730,10 +730,10 @@
     <value>Step</value>
   </data>
   <data name="Step1" xml:space="preserve">
-    <value>Have your myTAG on hand, if you don't have it yet, buy it in the store</value>
+    <value>Press the Configure myTAG button, wait until the phone stops vibrating and you see the "ready to scan" screen, then place your myTAG to the upper back of your phone.</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>When you press the configure myTAG button, your cell phone will vibrate, once it finishes vibrating, a popup will appear with the NFC reader</value>
+    <value>Keep your myTAG pressed against the phone until it vibrates again and you see the confirmation screen. NOTE: The area of your phone where you have to place your myTAG in order to congifure it may vary dependeing on the phone model.</value>
   </data>
   <data name="Step3" xml:space="preserve">
     <value>Bring your myTAG to the top back of your phone</value>
@@ -746,5 +746,8 @@
   </data>
   <data name="Step6" xml:space="preserve">
     <value>Your myTAG is ready! You can paste it on your cell phone or wherever you prefer and start sharing your information</value>
+  </data>
+  <data name="TAGInstructions" xml:space="preserve">
+    <value>Read both steps before configurating your myTAG</value>
   </data>
 </root>

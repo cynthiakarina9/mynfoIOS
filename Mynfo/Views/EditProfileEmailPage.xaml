@@ -76,6 +76,7 @@
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
+                            BackgroundColor="Transparent"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
@@ -107,6 +108,7 @@
                             Text = "{i18n:Translate EMail}"
                             TextColor = "{StaticResource MainColor}"/>
                         <Entry
+                            BackgroundColor="Transparent"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"

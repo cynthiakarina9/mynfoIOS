@@ -889,5 +889,9 @@
         {
             get { return Resource.Step6; }
         }
+        public static string TAGInstructions
+        {
+            get { return Resource.TAGInstructions;  }
+        }
     }
 }

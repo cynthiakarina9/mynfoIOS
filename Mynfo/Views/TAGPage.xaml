@@ -6,21 +6,20 @@
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid
+        <StackLayout
             BindingContext="{Binding TAG}">
             <ImageButton
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
-                Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
                 VerticalOptions = "Center"
                 WidthRequest = "100"
                 x:Name="Logosuperior"/>
-        </Grid>
+        </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <AbsoluteLayout
+        <StackLayout
             BindingContext="{Binding TAG}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -65,7 +64,7 @@
                     Grid.Row="2"
                     VerticalOptions="End"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Lee todas las instrucciones (3 pasos) antes de empezar a configurar tu Tag"
+                    Text="{i18n:Translate TAGInstructions}"
                     HorizontalTextAlignment="Center"
                     FontAttributes="Bold"
                     Padding="0,0,0,15"/>
@@ -78,11 +77,12 @@
                         <DataTemplate>
                             <StackLayout>
                                 <Frame 
+                                    BackgroundColor="Transparent"
                                     HasShadow="True"
                                     BorderColor="{StaticResource MainColor}"
                                     CornerRadius="5"
                                     Margin="10"
-                                    HeightRequest="400"
+                                    HeightRequest="200"
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
                                     <StackLayout>
@@ -96,7 +96,7 @@
                                         <Label Text="{Binding Detail}"
                                            FontAttributes="None"
                                            HorizontalOptions="Center"
-                                           MaxLines="5"
+                                           MaxLines="8"
                                            LineBreakMode="TailTruncation" />
                                     </StackLayout>
                                 </Frame>
@@ -121,6 +121,6 @@
                         WidthRequest="150"/>
                 </StackLayout>
             </Grid>
-        </AbsoluteLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

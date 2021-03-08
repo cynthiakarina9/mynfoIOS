@@ -112,9 +112,6 @@
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024-Logo.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1x-foco.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -134,6 +131,9 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\3x-icono-aplicacion.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\mynfo 1024.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\prueba-logo4.png">
@@ -591,6 +591,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\check3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_save.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

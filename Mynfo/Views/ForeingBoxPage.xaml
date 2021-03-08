@@ -25,56 +25,63 @@
             x:Name="FrameB">
             <Grid
                 BindingContext="{Binding ForeingBox}">
-                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!-- Información del usuario foraneo-->
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.RowSpan="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan = "3"
+                    HorizontalOptions="CenterAndExpand">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="20*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <!-- Información del usuario foraneo-->
                         <StackLayout
                             Grid.Row="0"
-                            Grid.RowSpan="4"
+                            Grid.RowSpan="5"
                             Grid.Column="0"
-                            Grid.ColumnSpan = "3"
-                            HorizontalOptions="CenterAndExpand">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <controls:CircleImage
-                                    BorderColor="{StaticResource MainColor}"
-                                    BorderThickness="3"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="5"
-                                    Grid.Column="0"
-                                    Grid.ColumnSpan="2"
-                                    Margin="0,5,0,0"
-                                    HeightRequest="100"
-                                    WidthRequest="100"
+                            Grid.ColumnSpan="2">
+                            <Frame
+                                BorderColor="{StaticResource MainColor}"
+                                WidthRequest="100"
+                                HeightRequest="100" 
+                                CornerRadius="50"
+                                IsClippedToBounds="True"
+                                HasShadow="False"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Padding="0">
+                                <Image 
+                                    HeightRequest="1000"
+                                    WidthRequest="1000"
                                     Aspect="AspectFill"
-                                    x:Name="ForeignUserImage">
-                                </controls:CircleImage>
-                                <Label 
+                                    x:Name="ForeignUserImage"/>
+                            </Frame>
+                        </StackLayout>
+                        <Label 
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"
                                     Grid.Row="0"
@@ -83,42 +90,39 @@
                                     HorizontalTextAlignment="Start"
                                     Padding="0,-5,0,0"
                                     TextColor = "{StaticResource MainColor}"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignUserName"/>
-                                <Label 
+                        <Label 
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"
                                     Grid.Row="1"
                                     FontSize = "15"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
                                     TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignAge"/>
-                                <Label 
+                        <Label 
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"
                                     Grid.Row="2"
                                     FontSize = "15"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
                                     TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignLocation"/>
-                                <Label 
+                        <Label 
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"
                                     Grid.Row="3"
                                     FontSize = "15"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
                                     TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignJob"/>
-                                <Label 
+                        <Label 
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"
                                     Grid.Row="4"
@@ -126,50 +130,47 @@
                                     FontAttributes="Bold"
                                     HorizontalTextAlignment="End"
                                     VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
                                     TextColor = "#FF5521"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignConnection"/>
-                            </Grid>
-                            <Line
+                    </Grid>
+                    <Line
                                 HeightRequest="1"
                                 BackgroundColor="#FF5521"
                                 Margin="0,0,0,40"/>
-                        </StackLayout>
+                </StackLayout>
 
-                        <!-- Listado de perfiles -->
-                        <CollectionView 
+                <!-- Listado de perfiles -->
+                <CollectionView 
                             ItemsSource="{Binding ProfilesF}"
                             Grid.Row="4"
                             Grid.ColumnSpan="3"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Vertical"
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
                                         Span="3" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
                                         BackgroundColor="Transparent"
                                         Padding="10">
-                                        <Image
+                                <Image
                                                 BackgroundColor="Transparent"
                                                 HeightRequest="50"
                                                 Source="{Binding Logo}"
                                                 WidthRequest="50"/>
-                                        <Label
+                                <Label
                                                 HorizontalTextAlignment="Center"
                                                 Text="{Binding ProfileName}"
                                                 FontAttributes="Bold"
                                                 TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
 
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Grid>
-                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Grid>
         </Frame>
         

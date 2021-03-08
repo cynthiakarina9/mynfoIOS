@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:Mynfo.Helpers" 
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.MyProfilePage"
              Title = "{i18n:Translate MyAccount}"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
@@ -277,7 +276,16 @@
                 Grid.Row="0"
                 HorizontalOptions="End"
                 VerticalOptions="Start">
-                <Button
+                <ImageButton 
+                    Grid.Row="0"
+                    BackgroundColor="Transparent"
+                    Command = "{Binding SaveCommand}"
+                    IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                    Source="icon_save.png"
+                    HeightRequest="50"
+                    Margin="0,15,15,0"
+                    x:Name = "ButtonSave"/>
+                <!--<Button
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "13"
                     Command = "{Binding SaveCommand}"
@@ -289,7 +297,7 @@
                     Text = "{i18n:Translate Save}"
                     TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                     x:Name = "ButtonSave">
-                </Button>
+                </Button>-->
             </Grid>
         </Grid>
     </ContentPage.Content>

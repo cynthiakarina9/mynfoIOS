@@ -68,7 +68,28 @@
                                         <ColumnDefinition Width="30*" />
                                         <ColumnDefinition Width="70*" />
                                     </Grid.ColumnDefinitions>
-                                    <controls:CircleImage
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3">
+                                        <Frame 
+                                            BorderColor="{StaticResource MainColor}"
+                                            WidthRequest="80"
+                                            HeightRequest="80" 
+                                            CornerRadius="40"
+                                            IsClippedToBounds="True"
+                                            HasShadow="False"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            Padding="0">
+                                            <Image
+                                                WidthRequest="1000"
+                                                HeightRequest="1000"
+                                                Aspect="AspectFill"
+                                                Source = "{Binding ImageFullPath}"/>
+                                        </Frame>
+                                    </StackLayout>
+                                    <!--<controls:CircleImage
                                         BorderColor="{StaticResource MainColor}"
                                         BorderThickness="3"
                                         Grid.Row="0"
@@ -78,7 +99,7 @@
                                         WidthRequest="60"
                                         Aspect="AspectFill"
                                         Source="{Binding ImageFullPath}">
-                                    </controls:CircleImage>
+                                    </controls:CircleImage>-->
                                     <Label 
                                         Grid.Column="1"
                                         Grid.Row="0"
