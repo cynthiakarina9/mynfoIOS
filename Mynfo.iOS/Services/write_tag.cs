@@ -128,7 +128,7 @@ namespace Mynfo.iOS.Services
             string user_id_tag = AppDelegate.user_id_tag;
             if (user_id_tag == "?") 
             {
-                Task task = App.DisplayAlertAsync("¡Primero escanea este Tag para escribirlo!");
+                Task task = App.DisplayAlertAsync(Helpers.Languages.ScanTAGFirst);
                 session.InvalidateSession();
                 session.Dispose();
                 AppDelegate.user_id_tag = "?";
@@ -154,7 +154,7 @@ namespace Mynfo.iOS.Services
                 }
                 else
                 {
-                    Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");                    
+                    Task task2 = App.DisplayAlertAsync(Helpers.Languages.TAGUsed);                    
                     session.Dispose();
                     session.InvalidateSession();
                     AppDelegate.user_id_tag = "?";

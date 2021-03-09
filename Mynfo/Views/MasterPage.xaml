@@ -9,6 +9,8 @@
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage 
+            BarBackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            BarTextColor="{AppThemeBinding Light=Black, Dark=White}"
             x:Name="Navigator">
             <x:Arguments>
                 <pages:TabbedPage1/>

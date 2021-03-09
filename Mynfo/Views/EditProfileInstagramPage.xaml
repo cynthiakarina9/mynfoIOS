@@ -73,6 +73,7 @@
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
+                            BackgroundColor="Transparent"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
@@ -102,6 +103,7 @@
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
+                            BackgroundColor="Transparent"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"

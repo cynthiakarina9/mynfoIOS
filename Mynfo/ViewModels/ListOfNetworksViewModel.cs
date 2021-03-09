@@ -492,7 +492,19 @@
         private void GotoAdd()
         {
             PopupNavigation.Instance.PopAsync();
+            MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel(Box.BoxId);
             PopupNavigation.Instance.PushAsync(new ProfileTypeSelection(Box.BoxId, Box.BoxDefault, Box.Name));
+        }
+        public ICommand GoBackCommand
+        {
+            get
+            {
+                return new RelayCommand(GoBack);
+            }
+        }
+        private void GoBack()
+        {
+            PopupNavigation.Instance.PopAsync();
         }
         #endregion
     }

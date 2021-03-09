@@ -14,7 +14,7 @@
                 </Grid.RowDefinitions>
                 <!-- Información del usuario -->
                 <StackLayout
-                Grid.Row="0">
+                    Grid.Row="0">
                     <RefreshView
                     IsRefreshing="{Binding IsRefreshing}"
                     Command="{Binding RefreshCommand}"
@@ -189,7 +189,7 @@
                                         VerticalOptions="CenterAndExpand">
                                             <Label 
                                             IsVisible="{Binding IsNull}"
-                                            Text="No Boxes yet"/>
+                                            Text="{i18n:Translate NoBoxesYet}"/>
                                         </StackLayout>
                                     </ContentView>
                                 </CollectionView.EmptyView>
@@ -254,7 +254,8 @@
                     Margin="15"
                     Source = "Plus"
                     VerticalOptions="End"
-                    WidthRequest = "50"/>
+                    WidthRequest = "50"
+                    x:Name="CreateBoxBtn"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

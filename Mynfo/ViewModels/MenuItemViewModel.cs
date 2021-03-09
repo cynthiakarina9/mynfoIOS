@@ -71,27 +71,32 @@
                 MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
                 await App.Navigator.PushAsync(new MyProfilePage());
             }
-
             else if (this.PageName == "QR")
             {
                 await App.Navigator.PushAsync(new QRTabbedPage());
             }
-
             else if (this.PageName == "TAGPage")
             {
                 MainViewModel.GetInstance().TAG = new TAGViewModel();
                 await App.Navigator.PushAsync(new TAGPage());
             }
-
             else if (this.PageName == "Help")
             {
                 MainViewModel.GetInstance().GIF = new GifViewModel("All");
                 await PopupNavigation.Instance.PushAsync(new GifPage());
             }
-
             else if (this.PageName == "Comments")
             {
                 await Browser.OpenAsync("https://mynfo.mx/preguntas-frecuentes/", BrowserLaunchMode.SystemPreferred);
+            }
+            else if (this.PageName == "Store")
+            {
+                await Browser.OpenAsync("https://mynfo.mx/index.php/tienda/", BrowserLaunchMode.SystemPreferred);
+            }
+            else if (this.PageName == "BasicIntro")
+            {
+                MainViewModel.GetInstance().GIF = new GifViewModel("BasicIntro");
+                await PopupNavigation.Instance.PushAsync(new GifPage());
             }
         }
         #endregion

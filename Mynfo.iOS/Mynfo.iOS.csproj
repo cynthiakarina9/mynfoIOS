@@ -133,10 +133,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\3x-icono-aplicacion.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\prueba-logo4.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\mynfo 1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Test2.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\prueba-logo4.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -573,6 +573,27 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\edit3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paleta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pelta3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GIF_scaneo_iOS.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\compra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GIF_mynfo_general.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_save.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

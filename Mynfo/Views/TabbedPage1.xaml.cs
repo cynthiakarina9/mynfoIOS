@@ -3,6 +3,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
@@ -24,18 +25,18 @@
             InitializeComponent();
             NetworksQty = 0;
             //ReloadConnections();
-            CheckTimeForeingBox();
+            //CheckTimeForeingBox();
             On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             OSAppTheme currentTheme = App.Current.RequestedTheme;
             if (currentTheme == OSAppTheme.Dark)
             {
                 Logosuperior.Source = "logo_superior2.png";
-                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                BarBackgroundColor = Color.FromHex("#222b3a");                
             }
             else
             {
                 Logosuperior.Source = "logo_superior3.png";
-                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
+                BarBackgroundColor = Color.FromHex("#FFFFFF");
             }
 
             var mainViewModel = MainViewModel.GetInstance();
@@ -72,6 +73,8 @@
             {
                 CurrentPage = Children[0];
             }
+            //Intro
+            CheckIntroductionBool();
         }
 
 
@@ -79,7 +82,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileEmails where dbo.ProfileEmails.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -108,7 +111,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfilePhones where dbo.ProfilePhones.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -137,7 +140,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -166,7 +169,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileSMs where dbo.ProfileSMs.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -245,6 +248,15 @@
                         connSQLite.Query<ForeingBox>("delete from ForeingBox where ForeingBox.BoxId = ?", foreingDelete.BoxId);
                     }
                 }
+            }
+        }
+
+        public async void CheckIntroductionBool()
+        {
+            if(MainViewModel.GetInstance().User.MostrarTutorial == false)
+            {
+                MainViewModel.GetInstance().IntroductionGif = new IntroductionGifViewModel();
+                await PopupNavigation.Instance.PushAsync(new IntroductionGifPage());
             }
         }
     }

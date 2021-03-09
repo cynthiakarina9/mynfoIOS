@@ -18,7 +18,7 @@ namespace Mynfo.Services
             {
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-                string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
                 string queryLastBoxCreated =
 
@@ -149,7 +149,7 @@ namespace Mynfo.Services
                     System.Text.StringBuilder sb;
                     //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-                    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                    string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
                     //Creación de perfiles locales de box local
                     string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
@@ -338,7 +338,7 @@ namespace Mynfo.Services
         public static void AddViewToUser(int _UserId)
         {
             System.Text.StringBuilder sb;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryAddView = "UPDATE dbo.Users SET Conexiones = Conexiones + 1 WHERE dbo.Users.UserId = " + _UserId;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -360,7 +360,7 @@ namespace Mynfo.Services
         {
             System.Text.StringBuilder sb;
             int views = 0;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryAddView = "select * from  dbo.Users WHERE dbo.Users.UserId = " + _UserId;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {

@@ -50,7 +50,7 @@
             switch (Name)
             {
                 case "All":
-                    GitImage = "facebook.gif";
+                    GitImage = "GIF_scaneo_iOS.gif";
                     break;
                 case "Facebook":
                     GitImage = "facebook.gif";
@@ -63,6 +63,9 @@
                     break;
                 case "YouTube":
                     GitImage = "youtube.gif";
+                    break;
+                case "BasicIntro":
+                    GitImage = "GIF_mynfo_general.gif";
                     break;
                 default:
                     break;

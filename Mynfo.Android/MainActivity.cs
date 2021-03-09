@@ -24,7 +24,7 @@
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", /*Theme = "@style/MainTheme",*/ MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 
     IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-    DataHost = "boxweb1.azurewebsites.net", DataScheme = "http",
+    DataHost = "boxweb.azurewebsites.net", DataScheme = "http",
     Categories = new[] { "android.intent.category.DEFAULT" })]
     [MetaData("android.nfc.action.TECH_DISCOVERED", Resource = "@xml/techlist")]
 
@@ -166,7 +166,7 @@
                         }
                     }
 
-                    string dominio = "boxweb1.azurewebsites.net/";
+                    string dominio = "boxweb.azurewebsites.net/";
                     string user = MainViewModel.GetInstance().User.UserId.ToString();
                     string tag_id = "";
                     if (user_id == Convert.ToInt32(user) || 0 == user_id)

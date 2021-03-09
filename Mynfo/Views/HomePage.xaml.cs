@@ -5,11 +5,11 @@
     using Mynfo.Models;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
@@ -29,8 +29,49 @@
         {
             InitializeComponent();
             this.User = MainViewModel.GetInstance().User;
+            System.Text.StringBuilder sb;
+            string consultaGetBoxesNum = "select * from dbo.Boxes where Boxes.UserId = " + User.UserId;
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+
+            int BoxNum = 0;
+
+
             this.CheckLocalBox();
-            if(User.Ocupacion == null || User.Ocupacion == string.Empty)
+
+            //Primer consulta para saber cantidad de boxes creadas
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(consultaGetBoxesNum);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BoxNum++;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            //Validamos que podamos crear boxes nuevas
+            if (BoxNum == 4)
+            {
+                CreateBoxBtn.IsVisible = false;
+                CreateBoxBtn.IsEnabled = false;
+            }
+            else if (BoxNum < 4)
+            {
+                CreateBoxBtn.IsVisible = true;
+                CreateBoxBtn.IsEnabled = true;
+            }
+
+            if (User.Ocupacion == null || User.Ocupacion == string.Empty)
             {
                 OccupationLabel.Text = Languages.OccupationLabel;
                 OccupationLabel.TextColor = Color.FromHex("#A1A1A1");
@@ -40,6 +81,7 @@
                 UbicacionLabel.Text = Languages.LocationLabel;
                 UbicacionLabel.TextColor = Color.FromHex("#A1A1A1");
             }
+
         }
         #endregion
 
@@ -52,7 +94,7 @@
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
-                string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 string queryToGetBoxDefault = "select * from dbo.Boxes where dbo.boxes.UserId = "
                                                 + MainViewModel.GetInstance().User.UserId
@@ -482,7 +524,7 @@
                 connSQLite.Insert(foreingBox);
             }
 
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetPhones = "select dbo.Boxes.BoxId, dbo.ProfilePhones.ProfilePhoneId, dbo.ProfilePhones.Name, " +
                              "dbo.ProfilePhones.Number from dbo.Box_ProfilePhone Join dbo.Boxes " +
                              "on(dbo.Boxes.BoxId = dbo.Box_ProfilePhone.BoxId) " +
@@ -696,6 +738,8 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
             await Navigation.PushAsync(new BoxRegisterPage());
+            /*MainViewModel.GetInstance().IntroductionGif = new IntroductionGifViewModel();
+            await PopupNavigation.Instance.PushAsync(new IntroductionGifPage());*/
         }        
         async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

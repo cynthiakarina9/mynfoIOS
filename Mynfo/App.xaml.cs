@@ -44,6 +44,7 @@
 
             //Set root SQLite
             root_db = root_DB;
+            Xamarin.Forms.Device.SetFlags(new[] { "CarouselView_Experimental"});
 
             Preferences.Set("key1", Guid.NewGuid().ToString());
             Preferences.Set("IsEnabled", true);
@@ -83,13 +84,36 @@
                 }
                 else
                 {
-                    this.MainPage = new NavigationPage(new LoginPage());
+                    if (Current.RequestedTheme == OSAppTheme.Dark)
+                    {
+                        this.MainPage = new NavigationPage(new LoginPage())
+                        {
+                            BarBackgroundColor = Color.FromHex("#222b3a"),
+                            BarTextColor = Color.White
+                        };
+                    }
+                    else
+                    {
+                        this.MainPage = new NavigationPage(new LoginPage());
+                    }
+                    
                 }
                 
             }
             else
             {
-                this.MainPage = new NavigationPage(new LoginPage());
+                if (Current.RequestedTheme == OSAppTheme.Dark)
+                {
+                    this.MainPage = new NavigationPage(new LoginPage())
+                    {
+                        BarBackgroundColor = Color.FromHex("#222b3a"),
+                        BarTextColor = Color.White
+                    };
+                }
+                else
+                {
+                    this.MainPage = new NavigationPage(new LoginPage());
+                }
             }
         }
         #endregion

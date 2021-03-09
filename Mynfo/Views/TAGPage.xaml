@@ -6,36 +6,43 @@
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid
+        <StackLayout
             BindingContext="{Binding TAG}">
             <ImageButton
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
-                Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
                 VerticalOptions = "Center"
                 WidthRequest = "100"
                 x:Name="Logosuperior"/>
-        </Grid>
+        </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <StackLayout
             BindingContext="{Binding TAG}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="15*"/>
                 </Grid.RowDefinitions>
+                <!--Mensaje incial-->
                 <Label
+                    Padding="0,10,0,0"
                     FontSize="17"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     HorizontalTextAlignment="Center"
                     Text="{i18n:Translate SureTAG}"
-                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
+                    Dark={StaticResource Dark_FontColor}}"/>
+                <!-- Mensaje de tienda-->
                 <StackLayout
-                    Grid.Row="2"
+                    Grid.Row="1"
                     HorizontalOptions="Center"
+                    VerticalOptions="Start"
                     Orientation="Horizontal">
                     <Label
                         FontSize="12"                        
@@ -52,25 +59,55 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
-                <Frame
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
-                    CornerRadius="60"
+                <!--Mensaje de instrucciónes-->
+                <Label 
+                    Grid.Row="2"
+                    VerticalOptions="End"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{i18n:Translate TAGInstructions}"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    Padding="0,0,0,15"/>
+                <!--Carrusel -->
+                <CarouselView 
                     Grid.Row="3"
-                    Margin="20">
-                    <StackLayout
-                        HorizontalOptions="CenterAndExpand"
-                        Orientation="Horizontal"
-                        VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="20"
-                            HorizontalTextAlignment="Center"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            x:Name="Press"/>
-                    </StackLayout>
-                </Frame>
+                    ItemsSource="{Binding CarouselInstructions}"
+                    PeekAreaInsets="50">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame 
+                                    BackgroundColor="Transparent"
+                                    HasShadow="True"
+                                    BorderColor="{StaticResource MainColor}"
+                                    CornerRadius="5"
+                                    Margin="10"
+                                    HeightRequest="200"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <StackLayout>
+                                        <Label
+                                            Text="{Binding Title}"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Start"
+                                            Margin="0,0,0,15"/>
+                                        <Label Text="{Binding Detail}"
+                                           FontAttributes="None"
+                                           HorizontalOptions="Center"
+                                           MaxLines="8"
+                                           LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <!-- Botón de configuración-->
                 <StackLayout
                     Grid.Row="4"
-                    Margin="15">
+                    Padding="10">
                     <Button
                         BackgroundColor="{StaticResource MainColor}"
                         BorderRadius="23"
@@ -84,6 +121,6 @@
                         WidthRequest="150"/>
                 </StackLayout>
             </Grid>
-        </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

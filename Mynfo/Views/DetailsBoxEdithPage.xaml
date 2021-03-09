@@ -38,21 +38,16 @@
                             VerticalOptions="Start"
                             WidthRequest="40"
                             x:Name="DeleteButton" />
-                        <StackLayout
-                            HorizontalOptions="CenterAndExpand"
-                            Grid.ColumnSpan="4"
-                            Grid.Row="2">
-                            <Button
-                                TextColor="{StaticResource MainColor}"
-                                Text="{Binding Color}"
-                                FontAttributes="Bold"
-                                FontSize="Medium"
-                                BackgroundColor="Transparent"
-                                BorderWidth="1"
-                                BorderColor="{StaticResource MainColor}"
-                                Padding="5"
-                                x:Name="ColorBtn"/>
-                        </StackLayout>
+                        <!-- Botón para paleta de colores-->
+                        <ImageButton 
+                            BackgroundColor="Transparent"
+                            Grid.Column="0"
+                            Grid.RowSpan="2"
+                            HeightRequest="40"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            WidthRequest="40"
+                            x:Name="ColorBtn"/>
                         <!--Nombre de la box -->
                         <Entry 
                             FontAttributes="Bold"
