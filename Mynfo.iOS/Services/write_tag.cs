@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 using System.Threading.Tasks;
 using UIKit;
 using Xamarin.Forms;
@@ -75,7 +77,10 @@ namespace Mynfo.iOS.Services
                 Console.WriteLine(ex);
                 session.Dispose();
                 session.InvalidateSession();
-            }                                                   
+            }
+            
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Xamarin.Forms.Application.Current.MainPage = new MasterPage(); 
         }
 
         string GetRecords(NFCNdefPayload[] records)
