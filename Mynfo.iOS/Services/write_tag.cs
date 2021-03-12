@@ -69,7 +69,7 @@ namespace Mynfo.iOS.Services
                 //PopupNavigation.Instance.PopAsync(); 
                 
                 
-                //session.InvalidateSession();
+                //session.InvalidateSession(); 
                 //session.Dispose(); 
             } 
             catch (Exception ex)
