@@ -73,7 +73,7 @@ namespace Mynfo.iOS.Services
                 //session.Dispose(); 
             } 
             catch (Exception ex)
-            {
+            { 
                 Console.WriteLine(ex);
                 session.Dispose();
                 session.InvalidateSession();
