@@ -76,7 +76,7 @@
     <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchI18n>west</MtouchI18n>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <MtouchInterpreter>
