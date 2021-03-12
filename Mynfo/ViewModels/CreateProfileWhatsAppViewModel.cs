@@ -83,7 +83,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Lada))
+            /*if (string.IsNullOrEmpty(this.Lada))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -98,8 +98,8 @@
                     Languages.LadaValidation,
                     Languages.Accept);
                 return;
-            }
-            if (string.IsNullOrEmpty(this.Number2))
+            }*/
+            if (string.IsNullOrEmpty(this.Number))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -107,7 +107,7 @@
                     Languages.Accept);
                 return;
             }
-            if (!(this.Number2).ToCharArray().All(Char.IsDigit))
+            if (!(this.Number).ToCharArray().All(Char.IsDigit))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -115,7 +115,7 @@
                     Languages.Accept);
                 return;
             }
-            if (this.Number2.Length != 10)
+            if (this.Number.Length != 10)
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -141,7 +141,7 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            Number = Lada + Number2;
+            //Number = Lada + Number2;
             
             var profileWhatsApp = new ProfileWhatsapp
             {

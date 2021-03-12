@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using ViewModels;
     using Xamarin.Essentials;
@@ -101,7 +102,24 @@
                 case "Whatsapp":
                     try
                     {
-                        Chat.Open(selectedItem.value, Languages.MessageWhatsApp + " " + MainViewModel.GetInstance().User.FirstName);
+                        string language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
+                        switch (language)
+                        {
+                            case "en":
+                                Chat.Open("52" + selectedItem.value, "Hi%20from%20mynfo!");
+                                break;
+                            case "es":
+                                Chat.Open("52" + selectedItem.value, "Hola%20desde%20mynfo!");
+                                break;
+                            case "pt":
+                                Chat.Open("52" + selectedItem.value, "Olá%20de%20mynfo!");
+                                break;
+                            default:
+                                Chat.Open("52" + selectedItem.value, "Hi%20from%20mynfo!");
+                                break;
+                        }
+                        //Chat.Open("52" + selectedItem.value, Languages.MessageWhatsApp + " " + MainViewModel.GetInstance().User.FirstName);
                     }
                     catch (Exception ex)
                     {
