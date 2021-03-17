@@ -58,10 +58,17 @@
         #region Constructors
         public LoginViewModel()
         {
-            this.apiService = new ApiService();
-            
-            this.IsRemembered = true;
-            this.IsEnabled = true;
+            try
+            {
+                this.apiService = new ApiService();
+
+                this.IsRemembered = true;
+                this.IsEnabled = true;
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e);
+            }            
         }
         #endregion
 
@@ -88,141 +95,148 @@
         }
         private async void Login()
         {
-            if (string.IsNullOrEmpty(this.Email))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation,
-                    Languages.Accept);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(this.Password))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                     Languages.Error,
-                     Languages.PasswordValidation,
-                     Languages.Accept);
-                return;
-            }
-
-            this.IsRunning = true;
-            this.isEnabled = false;
-
-            var connection = await this.apiService.CheckConnection();
-
-            if (!connection.IsSuccess)
-            {
-                this.IsRunning = false;
-                this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    connection.Message,
-                    Languages.Accept);
-                return;
-            }
-
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var token = await this.apiService.GetToken(
-                apiSecurity,
-                this.Email,
-                this.Password);
-
-            if (token == null)
-            {
-                this.IsRunning = false;
-                this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.SomethingWrong,
-                    Languages.Accept);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(token.AccessToken))
-            {
-                this.IsRunning = false;
-                this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.LoginError,
-                    Languages.Accept);
-                this.Password = string.Empty;
-                return;
-            }
-
-            var user = await this.apiService.GetUserByEmail(
-                apiSecurity,
-                "/api",
-                "/Users/GetUserByEmail",
-                token.TokenType,
-                token.AccessToken,
-                this.Email);
-
-            var userLocal = Converter.ToUserLocal(user);
-            userLocal.Password = this.Password;
-            userLocal.MostrarTutorial = false;
-
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
-            mainViewModel.User = userLocal;
-
-            if (this.IsRemembered)
-            {
-                Settings.IsRemembered = "true";
-            }
-            else
-            {
-                Settings.IsRemembered = "false";
-            }
-
-            //Save Local User in SQLite
             try
             {
+                if (string.IsNullOrEmpty(this.Email))
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                        Languages.Error,
+                        Languages.EmailValidation,
+                        Languages.Accept);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(this.Password))
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                         Languages.Error,
+                         Languages.PasswordValidation,
+                         Languages.Accept);
+                    return;
+                }
+
+                this.IsRunning = true;
+                this.isEnabled = false;
+
+                var connection = await this.apiService.CheckConnection();
+
+                if (!connection.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    this.isEnabled = true;
+                    await Application.Current.MainPage.DisplayAlert(
+                        Languages.Error,
+                        connection.Message,
+                        Languages.Accept);
+                    return;
+                }
+
+                var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                var token = await this.apiService.GetToken(
+                    apiSecurity,
+                    this.Email,
+                    this.Password);
+
+                if (token == null)
+                {
+                    this.IsRunning = false;
+                    this.isEnabled = true;
+                    await Application.Current.MainPage.DisplayAlert(
+                        Languages.Error,
+                        Languages.SomethingWrong,
+                        Languages.Accept);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(token.AccessToken))
+                {
+                    this.IsRunning = false;
+                    this.isEnabled = true;
+                    await Application.Current.MainPage.DisplayAlert(
+                        Languages.Error,
+                        Languages.LoginError,
+                        Languages.Accept);
+                    this.Password = string.Empty;
+                    return;
+                }
+
+                var user = await this.apiService.GetUserByEmail(
+                    apiSecurity,
+                    "/api",
+                    "/Users/GetUserByEmail",
+                    token.TokenType,
+                    token.AccessToken,
+                    this.Email);
+
+                var userLocal = Converter.ToUserLocal(user);
+                userLocal.Password = this.Password;
+                userLocal.MostrarTutorial = false;
+
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Token = token;
+                mainViewModel.User = userLocal;
+
+                if (this.IsRemembered)
+                {
+                    Settings.IsRemembered = "true";
+                }
+                else
+                {
+                    Settings.IsRemembered = "false";
+                }
+
+                //Save Local User in SQLite
+                try
+                {
+                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                    {
+                        conn.CreateTable<UserLocal>();
+                        conn.Insert(userLocal);
+                    }
+                }
+                catch (Exception es)
+                {
+                    Console.WriteLine(es);
+                }
+
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.CreateTable<UserLocal>();
-                    conn.Insert(userLocal);
+                    conn.CreateTable<ForeingProfile>();
                 }
-            }
-            catch(Exception es)
-            {
-                Console.WriteLine(es);
-            }
-            
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                conn.CreateTable<ForeingProfile>();
-            }
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                conn.CreateTable<ForeingBox>();
-            }
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                conn.CreateTable<TokenResponse>();
-                conn.Insert(token);
-            }
-            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            {
-                connSQLite.CreateTable<ForeingBox>();
-                connSQLite.CreateTable<ForeingProfile>();
-            }
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<ForeingBox>();
+                }
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<TokenResponse>();
+                    conn.Insert(token);
+                }
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    connSQLite.CreateTable<ForeingBox>();
+                    connSQLite.CreateTable<ForeingProfile>();
+                }
 
-            mainViewModel.Home = new HomeViewModel();
-            mainViewModel.Register = new RegisterViewModel();
-            mainViewModel.MyProfile = new MyProfileViewModel();
-            mainViewModel.Profiles = new ProfilesViewModel();
-            mainViewModel.TAG = new TAGViewModel();
-            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-            Application.Current.MainPage = new MasterPage();
-            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
+                mainViewModel.Home = new HomeViewModel();
+                mainViewModel.Register = new RegisterViewModel();
+                mainViewModel.MyProfile = new MyProfileViewModel();
+                mainViewModel.Profiles = new ProfilesViewModel();
+                mainViewModel.TAG = new TAGViewModel();
+                mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
+                Application.Current.MainPage = new MasterPage();
+                //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
 
-            this.IsRunning = false;
-            this.isEnabled = true;
+                this.IsRunning = false;
+                this.isEnabled = true;
 
-            this.Email = string.Empty;
-            this.Password = string.Empty;
+                this.Email = string.Empty;
+                this.Password = string.Empty;
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e);
+            }            
         }
 
         public ICommand RegisterCommand
