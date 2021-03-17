@@ -15,7 +15,7 @@
         private ApiService apiService;
         #endregion
 
-        #region Attributes
+        #region Attributes 
         private string email;
         private string password;
         private bool isRunning;
