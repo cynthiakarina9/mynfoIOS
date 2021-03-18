@@ -87,6 +87,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <MtouchExtraArgs>
     </MtouchExtraArgs>
+    <MtouchDebug>true</MtouchDebug>
+    <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
