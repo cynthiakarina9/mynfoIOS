@@ -68,6 +68,7 @@
             catch (Exception e) 
             {
                 Console.WriteLine(e);
+                throw;
             }            
         }
         #endregion
@@ -97,6 +98,7 @@
         {
             try
             {
+                delete_sesion();
                 if (string.IsNullOrEmpty(this.Email))
                 {
                     await Application.Current.MainPage.DisplayAlert(
@@ -190,6 +192,7 @@
                 {
                     using (var conn = new SQLite.SQLiteConnection(App.root_db))
                     {
+                        conn.DeleteAll<UserLocal>();
                         conn.CreateTable<UserLocal>();
                         conn.Insert(userLocal);
                     }
@@ -197,6 +200,7 @@
                 catch (Exception es)
                 {
                     Console.WriteLine(es);
+                    var error = es;
                 }
 
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
@@ -235,7 +239,8 @@
             }
             catch (Exception e) 
             {
-                Console.WriteLine(e);
+                delete_sesion();
+                Console.WriteLine(e);                
             }            
         }
 
@@ -264,6 +269,40 @@
             MainViewModel.GetInstance().PasswordRecovery =
                 new PasswordRecoveryViewModel();
             await Application.Current.MainPage.Navigation.PushAsync( new PasswordRecoveryPage());
+        }
+        public void delete_sesion() 
+        {
+            var mainViewModal = MainViewModel.GetInstance();
+            Settings.IsRemembered = "false";
+            mainViewModal.Token = null;
+            mainViewModal.User = null;
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<UserLocal>();
+            }
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<TokenResponse>();
+            }
+            //Borrar la box local
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<BoxLocal>();
+            }
+            //Borrar perfiles locales
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<ProfileLocal>();
+            }
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<ForeingBox>();
+            }
+            //Borrar perfiles locales
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.DeleteAll<ForeingProfile>();
+            }
         }
         #endregion
     }
