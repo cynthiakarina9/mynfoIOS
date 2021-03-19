@@ -97,8 +97,7 @@
         private async void Login()
         {
             try
-            {
-                delete_sesion();
+            {                
                 if (string.IsNullOrEmpty(this.Email))
                 {
                     await Application.Current.MainPage.DisplayAlert(
@@ -192,8 +191,18 @@
                 {
                     using (var conn = new SQLite.SQLiteConnection(App.root_db))
                     {
-                        conn.DeleteAll<UserLocal>();
-                        conn.CreateTable<UserLocal>();
+
+                        var resulForeingBox = conn.GetTableInfo("UserLocal");
+
+                        if (resulForeingBox.Count < 1)
+                        {
+                            conn.CreateTable<UserLocal>();
+                        }
+                        else
+                        {
+                            conn.DeleteAll<UserLocal>();
+                            conn.CreateTable<UserLocal>();
+                        }
                         conn.Insert(userLocal);
                     }
                 }
@@ -205,21 +214,51 @@
 
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.CreateTable<ForeingProfile>();
+                    var resulForeingBox = conn.GetTableInfo("ForeingProfile");
+
+                    if (resulForeingBox.Count < 1)
+                    {
+                        conn.CreateTable<ForeingProfile>();
+                    }                    
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.CreateTable<ForeingBox>();
+                    var resulForeingBox = conn.GetTableInfo("ForeingBox");
+
+                    if (resulForeingBox.Count < 1)
+                    {
+                        conn.CreateTable<ForeingBox>();
+                    }                    
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.CreateTable<TokenResponse>();
+                    var resulTokenResponse = conn.GetTableInfo("TokenResponse");
+
+                    if (resulTokenResponse.Count < 1)
+                    {
+                        conn.CreateTable<TokenResponse>();
+                    }
+                    else
+                    {
+                        conn.DeleteAll<TokenResponse>();
+                        conn.CreateTable<TokenResponse>();
+                    }                
                     conn.Insert(token);
                 }
                 using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    connSQLite.CreateTable<ForeingBox>();
-                    connSQLite.CreateTable<ForeingProfile>();
+                    var resulForeingBox = connSQLite.GetTableInfo("ForeingBox");
+
+                    if (resulForeingBox.Count < 1)
+                    {
+                        connSQLite.CreateTable<ForeingBox>();
+                    }
+                    var resulForeingProfile = connSQLite.GetTableInfo("ForeingProfile");
+
+                    if (resulForeingProfile.Count < 1)
+                    {
+                        connSQLite.CreateTable<ForeingProfile>();
+                    }                    
                 }
 
                 mainViewModel.Home = new HomeViewModel();
@@ -239,7 +278,7 @@
             }
             catch (Exception e) 
             {
-                delete_sesion();
+                
                 Console.WriteLine(e);                
             }            
         }
