@@ -15,7 +15,7 @@ namespace Mynfo.Droid.Services
         private static readonly byte[] SELECT_APDU_HEADER = new byte[] { 0x00, 0xA4, 0x04, 0x00 };
 
         // AID for our loyalty card service.
-        private static readonly string SAMPLE_LOYALTY_CARD_AID = "F123456789";  //F123456789
+        private static readonly string SAMPLE_LOYALTY_CARD_AID = "F123456789";  //F123456789 
 
         // "OK" status word sent in response to SELECT AID command (0x9000)
         private static readonly byte[] SELECT_OK_SW = new byte[] { 0x90, 0x00 };
