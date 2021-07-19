@@ -14,7 +14,7 @@
     using Xamarin.Forms;
     using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
-    public partial class App : Xamarin.Forms.Application
+    public partial class App 
     {
         #region Variables
         public static string root_db;

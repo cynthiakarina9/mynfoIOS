@@ -4,7 +4,7 @@
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel 
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

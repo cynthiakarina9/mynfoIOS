@@ -1,19 +1,11 @@
-﻿using CoreFoundation;
-using CoreNFC;
+﻿using CoreNFC;
 using Foundation;
 using Mynfo.iOS.Services;
-using Mynfo.ViewModels;
-using Mynfo.Views;
 using Plugin.NFC;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using UIKit;
 using Xamarin.Forms;
-using static Mynfo.Views.TAGPage;
 
 [assembly: Dependency(typeof(leerTag))]
 namespace Mynfo.iOS.Services

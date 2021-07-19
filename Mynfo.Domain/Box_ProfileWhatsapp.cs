@@ -1,10 +1,8 @@
 ﻿namespace Mynfo.Domain
 {
     using Newtonsoft.Json;
-    using System.ComponentModel.DataAnnotations;
     public class Box_ProfileWhatsapp
     {
-        [Key]
         public int Box_ProfileWhatsappId { get; set; }
 
         public int BoxId { get; set; }

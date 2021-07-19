@@ -1,10 +1,8 @@
 ﻿namespace Mynfo.Domain
 {
     using Newtonsoft.Json;
-    using System.ComponentModel.DataAnnotations;
     public class Box_ProfilePhone
     {
-        [Key]
         public int Box_ProfilePhoneId { get; set; }
 
         public int BoxId { get; set; }

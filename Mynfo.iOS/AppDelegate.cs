@@ -4,22 +4,15 @@
     using CoreNFC;
     using Foundation;
     using Mynfo.Interfaces;
-    using Mynfo.iOS.Services;
     using Mynfo.Services;
-    using Mynfo.ViewModels;
-    using Mynfo.Views;
     using NdefLibrary.Ndef;
     using Plugin.NFC;
-    using Rg.Plugins.Popup.Services;
     using System;
     using System.IO;
     using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
     using UIKit;
     using Xamarin.Essentials;
     using Xamarin.Forms;
-    using static Mynfo.Views.TAGPage;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 

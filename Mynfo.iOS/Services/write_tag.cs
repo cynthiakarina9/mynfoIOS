@@ -5,16 +5,8 @@ using Mynfo.iOS.Services;
 using Mynfo.ViewModels;
 using Mynfo.Views;
 using Plugin.NFC;
-using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 using System.Threading.Tasks;
-using UIKit;
 using Xamarin.Forms;
 using static Mynfo.Views.TAGPage;
 
